@@ -4,7 +4,12 @@ console.log('hey');
 
 
 // To keep the app running
-process.exit(0);
+// process.exit(0);
 
 // To crash the app
 // process.exitCode = 1;
+
+const _ = require('lodash');
+
+const arr = [1,4,6,8];
+console.log(_.last(arr));
