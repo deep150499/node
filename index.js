@@ -17,7 +17,7 @@ const arr = [1,4,6,8];
 const cowsay = require('cowsay');
 
 // console.log(cowsay.say({
-//     text: "I am learning NPM module",
+//     text: "I am learning NPM module"
 //     e: "00",  
 //     t: "U",
 // }))
