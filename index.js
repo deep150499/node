@@ -29,3 +29,6 @@ const {ford,tesla} = require('./car');
 // console.log(ford);
 // console.log(tesla);
 
+console.log(ford);
+console.log(tesla);
+
