@@ -29,4 +29,6 @@ const {ford,tesla} = require('./car');
 // console.log(ford);
 // console.log(tesla);
 
-console.log(ford);
+console.log(JSON.stringify(ford,undefined,3));
+console.log(JSON.stringify(tesla,null,2));
+
