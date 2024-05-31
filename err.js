@@ -22,10 +22,10 @@ const {CustomError} = require('./customError');
 // }
 
 function doSomething () {
-     const data = fetch('localhost:3000/api');
+    //  const data = fetch('localhost:3000/api');
     console.log('do something func')
     // const data = 'do something func'
-    return data;
+    // return data;
 }
 
 // Uncaught exceptions
