@@ -12,4 +12,20 @@ console.log('hey');
 const _ = require('lodash');
 
 const arr = [1,4,6,8];
-console.log(_.last(arr));
+// console.log(_.last(arr));
+
+const cowsay = require('cowsay');
+
+// console.log(cowsay.say({
+//     text: "I am learning NPM module",
+//     e: "00",  
+//     t: "U",
+// }))
+
+// const vehicle = require('./car');
+const {ford,tesla} = require('./car');
+
+// console.log(vehicle);
+// console.log(ford);
+// console.log(tesla);
+
