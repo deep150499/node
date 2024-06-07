@@ -1,10 +1,16 @@
 const express = require('express');
 const router = express.Router();
-
+const path = require('path');
 const app = express();
 
 const port = 3001;
 
+// Built-in Middleware
+app.use(express.json());
+app.use(express.urlencoded({extended:true}));
+
+// Static files
+app.use(express.static(path.join(__dirname,"public")));
 
 // Application level middleware
 const loggerMiddleware = (req,res,next) => {
@@ -17,7 +23,6 @@ app.use(loggerMiddleware)
 app.use('/api/users',router);
 
 // Router-level middleware
-
 const fakeAuth = (req,res,next) => {
     const authStatus = true;
     if(authStatus){
@@ -35,7 +40,7 @@ const getUsers = (req,res) => {
 }
 
 const createUser = (req,res) => {
-    console.log("This is thr request body : ", req.body)
+    console.log("This is the request body recieved from client: ", req.body)
     res.json({message : "Create a user"})
 }
 
