@@ -22,6 +22,7 @@ const fakeAuth = (req,res,next) => {
     const authStatus = true;
     if(authStatus){
         console.log('Auth Status :',authStatus);
+        next();
     }
     else{
         res.status(401);
