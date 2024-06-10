@@ -1,7 +1,10 @@
 const express = require('express');
 const router = express.Router();
 const path = require('path');
+const logger = require('morgan');
+const multer = require('multer');
 const app = express();
+const upload = multer({dest:'./public/uploads'})
 
 const port = 3001;
 
@@ -10,7 +13,7 @@ app.use(express.json());
 app.use(express.urlencoded({extended:true}));
 
 // Static files
-app.use(express.static(path.join(__dirname,"public")));
+app.use("/static",express.static(path.join(__dirname,"public")));
 
 // Application level middleware
 const loggerMiddleware = (req,res,next) => {
@@ -20,7 +23,12 @@ const loggerMiddleware = (req,res,next) => {
 
 app.use(loggerMiddleware)
 
+// Third party middleware
+app.use(logger('combined'))
+
 app.use('/api/users',router);
+
+
 
 // Router-level middleware
 const fakeAuth = (req,res,next) => {
@@ -75,6 +83,18 @@ const errorhandler = (err,req,res,next) => {
             break;
     }
 }
+
+app.post('./upload',upload.single('image'),(req,res,next) => {
+    console.log(req.file,req.body);
+    res.send(req.file);
+} , (err,req,res,next) => {
+    res.status(400).send({err : err.message})
+})
+
+app.all('*',(req,res) => {
+    res.status(400);
+    throw new Error('Route not found');
+})
 
 // app.get('/',(req,res) => {
 //     res.json({message : "Hello World"})
